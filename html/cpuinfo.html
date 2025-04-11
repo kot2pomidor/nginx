@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CPU Monitor</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>CPU Usage</h1>
+  <div id="cpu">Loading...</div>
+
+  <script>
+    async function fetchCPU() {
+      try {
+        const res = await fetch('/cpu_usage');
+        const text = await res.text();
+        document.getElementById('cpu').textContent = text + ' %';
+	
+      } catch (e) {
+        document.getElementById('cpu').innerText = 'Error loading';
+      }
+    }
+
+    fetchCPU();
+    var timer = setInterval(fetchCPU(), 2000);  // каждые 2 секунды
+    
+  </script>
+</body>
+</html>

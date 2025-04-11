@@ -1,0 +1,7 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+  apache:
+    build:
+      context: ./apache
